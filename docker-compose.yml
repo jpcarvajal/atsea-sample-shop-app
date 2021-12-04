@@ -4,6 +4,10 @@ services:
   reverse_proxy:
     build: ./reverse_proxy
     user: nginx
+    deploy:
+      resources:
+        limits:
+          memory: 512m
 
   database:
     build: 
@@ -20,6 +24,11 @@ services:
       - back-tier
     secrets:
       - postgres_password
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+
 
   appserver:
     build:
@@ -35,6 +44,10 @@ services:
       - back-tier
     secrets:
       - postgres_password
+    deploy:
+      resources:
+        limits:
+          memory: 512m
 
   payment_gateway:
     build:
@@ -43,6 +56,10 @@ services:
       - payment
     secrets:
       - payment_token
+    deploy:
+      resources:
+        limits:
+          memory: 512m
 
 networks:
   front-tier:
