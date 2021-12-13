@@ -2,17 +2,16 @@ version: "3.1"
 
 services:
   reverse_proxy:
-    build: ./reverse_proxy
+    image: jpcarvajal/reverse_proxy
     user: nginx
+
     deploy:
       resources:
         limits:
           memory: 512m
 
   database:
-    build: 
-       context: ./database
-    image: atsea_db
+    image: jpcarvajal/database
     user: postgres
     environment:
       POSTGRES_USER: gordonuser
@@ -31,10 +30,7 @@ services:
 
 
   appserver:
-    build:
-       context: app
-       dockerfile: Dockerfile
-    image: atsea_app
+    image: jpcarvajal/app
     user: gordon
     ports:
       - "8080:8080" 
@@ -50,8 +46,7 @@ services:
           memory: 512m
 
   payment_gateway:
-    build:
-      context: payment_gateway
+    image: jpcarvajal/payment_gateway
     networks:
       - payment
     secrets:
