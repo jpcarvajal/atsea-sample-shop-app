@@ -1,9 +1,10 @@
-name: Java CI with Maven
+name: CI
 
 on:
 
   pull_request:
     branches: [ master ]
+
 
 jobs:
 
@@ -12,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Set up JDK 
       uses: actions/setup-java@v2
       with:
@@ -27,9 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:    
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Build with Maven
       run: mvn -B package --file app/pom.xml
+
 
   test:
 
@@ -38,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Test with Maven
       run: mvn -B test --file app/pom.xml
