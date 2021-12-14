@@ -74,12 +74,12 @@ jobs:
                     sudo docker-compose up -d
                   
         - name: Trigger end to end tests
-           run: |
+           run:|
             curl --request POST \
             --url https://api.github.com/repos/jpcarvajal/atsea-tests/dispatches \
-            --header 'authorization: Bearer ${{ secrets.GIT_HUB_ACCESS_TOKEN }}' \
-            --header 'Accept: application/vnd.github.v3+json' \
+            --header 'authorization:Bearer ${{ secrets.GIT_HUB_ACCESS_TOKEN }}' \
+            --header 'Accept:application/vnd.github.v3+json' \
             --data '{
-              "event_type": "deployed"
+              "event_type":"deployed"
               }' \
             --fail
