@@ -51,7 +51,7 @@ jobs:
         
         - name: Check if the instance is running and run it if not
           run: | 
-            aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}  
+            aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID_AWS }}  
             sleep 40s
         
         - name: Copy files via ssh key
