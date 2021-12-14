@@ -75,5 +75,4 @@ jobs:
                   
         - name: Trigger end to end tests
           run: |
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer ${{ secrets.GIT_HUB_ACCESS_TOKEN }}" --request POST --data '{"event_type": "deployed"}' https://api.github.com/repos/jpcarvajal/
-atsea-tests/dispatches
+            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer ${{ secrets.GIT_HUB_ACCESS_TOKEN }}" --request POST --data '{"event_type": "deployed"}' https://api.github.com/repos/jpcarvajal/atsea-tests/dispatches
