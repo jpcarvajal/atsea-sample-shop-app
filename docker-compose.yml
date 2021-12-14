@@ -4,11 +4,11 @@ services:
   reverse_proxy:
     image: jpcarvajal/reverse_proxy
     user: nginx
-
-    deploy:
-      resources:
-        limits:
-          memory: 512m
+    
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 512m
 
   database:
     image: jpcarvajal/database
@@ -23,10 +23,10 @@ services:
       - back-tier
     secrets:
       - postgres_password
-    deploy:
-      resources:
-        limits:
-          memory: 512m
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 512m
 
 
   appserver:
@@ -40,10 +40,10 @@ services:
       - back-tier
     secrets:
       - postgres_password
-    deploy:
-      resources:
-        limits:
-          memory: 512m
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 512m
 
   payment_gateway:
     image: jpcarvajal/payment_gateway
@@ -51,16 +51,18 @@ services:
       - payment
     secrets:
       - payment_token
-    deploy:
-      resources:
-        limits:
-          memory: 512m
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 512m
 
 networks:
   front-tier:
   back-tier:
   payment:
     driver: overlay
+    #workflow fails if present
+    #attachable: true        
 
 secrets:
   postgres_password:
