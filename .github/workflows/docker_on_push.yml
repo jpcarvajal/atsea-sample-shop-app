@@ -51,8 +51,8 @@ jobs:
         
         - name: Check if the instance is running and run it if not
           run: | 
-            state=`(aws ec2 describe-instance-status --instance-id ${{ secrets.INSTANCE_ID_AWS }}) | grep -w "running" | wc -l`;
-            if [ "$state" -eq 0 ]; then aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID_AWS }}; fi
+            aws ec2 start-instances --instance-ids ${{ secrets.INSTANCE_ID }}  
+            sleep 40s
         
         - name: Copy files via ssh key
           uses: appleboy/scp-action@master
