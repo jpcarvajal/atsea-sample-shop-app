@@ -70,7 +70,7 @@ jobs:
             username: ${{ secrets.INSTANCE_USERNAME }}
             key: ${{ secrets.SSH_KEY }}
             script: |
-                    sudo docker swarn init 
+                    sudo docker swarm init 
                     sudo docker-compose up -d
                   
         # - name: Trigger end to end tests
